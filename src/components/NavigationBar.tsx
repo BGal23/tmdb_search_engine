@@ -8,6 +8,7 @@ const NavigationBar = () => {
     <div className="container flex justify-between items-center">
       <h4>LOGO</h4>
       <a>{t("bestMovies")}</a>
+      <a>{t("bestSeries")}</a>
       <LanguageSwitcher />
     </div>
   );
