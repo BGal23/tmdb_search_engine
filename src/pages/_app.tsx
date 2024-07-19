@@ -1,5 +1,5 @@
-import "../lib/i18n";
-import "../styles/globals.css";
+import "@/lib/i18n";
+import "@/styles/globals.css";
 import { AppProps } from "next/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
