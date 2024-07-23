@@ -12,8 +12,18 @@ const LanguageSwitcher = () => {
 
   return (
     <div className="flex gap-4">
-      <button onClick={() => changeLanguage("en")}>ENG</button>
-      <button onClick={() => changeLanguage("pl")}>PL</button>
+      <button
+        className="transition-all duration-500 ease hover:scale-110"
+        onClick={() => changeLanguage("en")}
+      >
+        ENG
+      </button>
+      <button
+        className="transition-all duration-500 ease hover:scale-110"
+        onClick={() => changeLanguage("pl")}
+      >
+        PL
+      </button>
     </div>
   );
 };

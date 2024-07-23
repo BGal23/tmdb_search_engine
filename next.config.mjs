@@ -1,14 +1,15 @@
 import path from "path";
 import { fileURLToPath } from "url";
-import pkg from "./next-i18next.config.js";
-const { i18n } = pkg;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const nextConfig = {
   reactStrictMode: true,
-  i18n,
+  i18n: {
+    defaultLocale: "en",
+    locales: ["en", "pl"],
+  },
   images: {
     domains: ["image.tmdb.org"],
   },

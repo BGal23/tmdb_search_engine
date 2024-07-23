@@ -1,4 +1,6 @@
 {
+  "language": "pl",
   "bestMovies": "Najlepsze Filmy",
-  "bestSeries": "Najlepsze Seriale"
+  "bestSeries": "Najlepsze Seriale",
+  "headerPhoto": "Zdjęcie Tła"
 }

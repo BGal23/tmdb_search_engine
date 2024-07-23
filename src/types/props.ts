@@ -1,8 +1,19 @@
+import { MediaData } from "./data";
+
 export interface SectionProps {
   title: string;
-  data: any;
+  data: MediaData[];
+  language: string;
+  anchor: string;
 }
 
 export interface HomeProps {
-  movies: any;
+  movies: MediaData[];
+  tv: MediaData[];
+  language: string;
+}
+
+export interface MenuMobileProps {
+  isMobileMenuOpen: boolean;
+  setIsMobileMenuOpen: (isMobileMenuOpen: boolean) => void;
 }

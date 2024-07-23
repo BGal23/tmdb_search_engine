@@ -9,11 +9,9 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "header-img":
-          "url('https://t4.ftcdn.net/jpg/06/72/05/79/360_F_672057957_fAy3Lz55vymUoswtXEviRk2mtipKFc1d.jpg')",
-        // "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        // "gradient-conic":
-        //   "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "header-img": "url('/images/background-desktop.jpg')",
+        "gradient-section-name":
+          "linear-gradient(90deg, #354E9C33 40%, black 90%)",
       },
       container: {
         center: true,
