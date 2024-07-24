@@ -11,7 +11,7 @@ const MobileMenu: React.FC<MenuMobileProps> = ({
 
   return (
     <div
-      className="w-40 bg-black/80 fixed top-12 right-0 transition-all duration-300 ease border-l border-b border-white/70  rounded-bl-lg"
+      className="w-40 z-50 bg-black/80 fixed top-12 right-0 transition-all duration-300 ease border-l border-b border-white/70 rounded-bl-lg"
       style={{
         right: isMobileMenuOpen ? undefined : "-32em",
       }}

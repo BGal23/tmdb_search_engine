@@ -1,14 +1,29 @@
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
   const { t } = useTranslation();
+  const router = useRouter();
+  const [searchQuery, setSearchQuery] = useState<string>("");
+
+  useEffect(() => {
+    if (typeof router.query.search === "string") {
+      setSearchQuery(router.query.search);
+    } else if (Array.isArray(router.query.search)) {
+      setSearchQuery(router.query.search[0] || "");
+    }
+  }, [router.query.search]);
+
+  useEffect(() => {
+    if (searchQuery.length >= 3) {
+      router.push(`/?search=${searchQuery}`);
+    } else {
+      router.push(`/`);
+    }
+  }, [searchQuery]);
 
   return (
-    // <div className="bg-header-img bg-center h-96 mt-12 object-contain">
-    //   <div className="bg-black opacity-40 w-full h-full flex justify-center items-center">
-    //     <input className="h-6 text-black" type="text" />
-    //   </div>
-    // </div>
     <div className="mt-12 md:mt-14 lg:mt-16 flex flex-col items-center">
       <picture>
         <source
@@ -23,8 +38,11 @@ const Header = () => {
         />
       </picture>
       <input
+        value={searchQuery}
+        onChange={(event) => setSearchQuery(event.target.value)}
         className="h-8 text-black relative bottom-28 md:bottom-36 lg:bottom-52"
         type="text"
+        placeholder={t("searchPlaceholder")}
       />
     </div>
   );

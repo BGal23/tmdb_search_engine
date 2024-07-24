@@ -4,5 +4,6 @@ export interface MediaData {
   posterPath: string;
   releaseDate: string;
   voteAverage: number;
+  popularity?: number;
   isMovie: boolean;
 }
