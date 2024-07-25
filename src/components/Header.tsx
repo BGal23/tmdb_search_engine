@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import { FaSearch, FaTimes } from "react-icons/fa";
+import Image from "next/image";
 
 const Header = () => {
   const { t } = useTranslation();
@@ -31,19 +33,34 @@ const Header = () => {
           srcSet="/images/background-desktop.jpg"
         />
         <source media="(min-width: 768px)" srcSet="/images/bg-desktop.jpg" />
-        <img
+
+        <Image
           className="w-full h-48 md:h-64 lg:h-96 object-cover"
           src="/images/background-desktop.jpg"
+          width={100}
+          height={100}
           alt={t("headerPhoto")}
+          priority
         />
       </picture>
-      <input
-        value={searchQuery}
-        onChange={(event) => setSearchQuery(event.target.value)}
-        className="h-8 text-black relative bottom-28 md:bottom-36 lg:bottom-52"
-        type="text"
-        placeholder={t("searchPlaceholder")}
-      />
+      <div className="flex flex-row h-10 w-80 items-center relative bottom-28 md:bottom-36 lg:bottom-52 z-30 ">
+        <FaSearch className="relative left-8 fill-black h-8 w-8" />
+        <input
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          className="h-full w-full text-black border-solid border-2 border-black pl-9"
+          type="text"
+          placeholder={t("searchPlaceholder")}
+        />
+        <button
+          onClick={() => setSearchQuery("")}
+          type="button"
+          className="relative right-7 h-7 w-7"
+          style={{ display: searchQuery.length > 0 ? "block" : "none" }}
+        >
+          <FaTimes className="fill-black transition-all duration-300 ease w-full h-full" />
+        </button>
+      </div>
     </div>
   );
 };

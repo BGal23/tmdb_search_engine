@@ -2,5 +2,9 @@
   "language": "en",
   "bestMovies": "Best Movies",
   "bestSeries": "Best TV Series",
-  "headerPhoto": "Background Photo"
+  "headerPhoto": "Background Photo",
+  "links": "Links",
+  "footerDescription": "This is a short description about the website. It provides useful information to the visitors.",
+  "searchingTitle": "SEARCH YOUR MOVIE OR TV SERIES",
+  "searchPlaceholder": "Search"
 }

@@ -2,5 +2,9 @@
   "language": "pl",
   "bestMovies": "Najlepsze Filmy",
   "bestSeries": "Najlepsze Seriale",
-  "headerPhoto": "Zdjęcie Tła"
+  "headerPhoto": "Zdjęcie Tła",
+  "links": "Linki",
+  "footerDescription": "Oto krótki opis strony internetowej. Dostarcza odwiedzającym przydatnych informacji.",
+  "searchingTitle": "WYSZUKAJ SWÓJ FILM LUB SERIAL",
+  "searchPlaceholder": "Szukaj"
 }

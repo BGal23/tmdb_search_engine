@@ -48,7 +48,7 @@ export const fetchSearchedMedia = async (
       }
     }
 
-    return mergedResults;
+    return mergedResults.splice(0, 20);
   } catch (error) {
     console.error("Error fetching searched media:", error);
     throw new Error("Failed to fetch searched media");

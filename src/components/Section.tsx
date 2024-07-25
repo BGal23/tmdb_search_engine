@@ -45,7 +45,10 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
         {data && (
           <Slider {...settings}>
             {data.map((media) => (
-              <div key={media.id} className="movie-slide p-2">
+              <div
+                key={media.id}
+                className="movie-slide p-2 transition-all duration-500 ease hover:scale-[1.02]"
+              >
                 <a
                   href={`https://www.themoviedb.org/${
                     media.isMovie ? "movie" : "tv"

@@ -1,15 +1,16 @@
 import { useTranslation } from "react-i18next";
 import { useMediaQuery } from "react-responsive";
-import { MenuMobileProps } from "@/types/props";
+import { NavMenuProps } from "@/types/props";
 import { useEffect, useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Logo from "./Logo";
 import Link from "next/link";
 
-const NavigationBar: React.FC<MenuMobileProps> = ({
+const NavigationBar: React.FC<NavMenuProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
+  setIsSearchedMenuOpen,
 }) => {
   const { t } = useTranslation();
   const [isClient, setIsClient] = useState(false);
@@ -25,7 +26,14 @@ const NavigationBar: React.FC<MenuMobileProps> = ({
   }
 
   return (
-    <div className="fixed w-full bg-black/80 z-50 h-12 md:h-14 lg:h-16 top-0 border-b border-white/70">
+    <div
+      onClick={() => {
+        if (setIsSearchedMenuOpen) {
+          setIsSearchedMenuOpen(false);
+        }
+      }}
+      className="fixed w-full bg-black/80 z-50 h-12 md:h-14 lg:h-16 top-0 border-b border-white/70"
+    >
       <div className="container flex flex-row items-center justify-between md:justify-start h-full">
         <Link href="/">
           <Logo />

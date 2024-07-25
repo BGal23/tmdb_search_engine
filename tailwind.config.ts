@@ -12,6 +12,8 @@ const config: Config = {
         "header-img": "url('/images/background-desktop.jpg')",
         "gradient-section-name":
           "linear-gradient(90deg, #354E9C33 40%, black 90%)",
+        "gradient-searching-title":
+          "linear-gradient(90deg, transparent 0%, black 50%, transparent 100%)",
       },
       container: {
         center: true,

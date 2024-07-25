@@ -1,9 +1,9 @@
 import { useTranslation } from "react-i18next";
-import { MenuMobileProps } from "@/types/props";
+import { NavMenuProps } from "@/types/props";
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-const MobileMenu: React.FC<MenuMobileProps> = ({
+const MobileMenu: React.FC<NavMenuProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {

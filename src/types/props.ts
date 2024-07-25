@@ -14,12 +14,14 @@ export interface HomeProps {
   searched: MediaData[];
 }
 
-export interface MenuMobileProps {
+export interface NavMenuProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (isMobileMenuOpen: boolean) => void;
+  setIsSearchedMenuOpen?: (isSearchedMenuOpen: boolean) => void;
 }
 
 export interface SearchedProps {
   data: MediaData[];
   language: "en" | "pl";
+  setIsSearchedMenuOpen: (isSearchedMenuOpen: boolean) => void;
 }
