@@ -11,7 +11,14 @@ const nextConfig = {
     locales: ["en", "pl"],
   },
   images: {
-    domains: ["image.tmdb.org"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "image.tmdb.org",
+        port: "",
+        pathname: "/**",
+      },
+    ],
   },
   webpack: (config) => {
     config.resolve.alias["@"] = path.join(__dirname);

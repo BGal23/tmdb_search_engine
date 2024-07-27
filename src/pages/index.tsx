@@ -1,9 +1,11 @@
 import { useTranslation } from "react-i18next";
+// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+// import nextConfig from "../../next.config.mjs";
 import { GetServerSideProps } from "next";
 import { HomeProps } from "@/types/props";
 import { fetchPopularMedia } from "@/lib/fetchPopularMedia";
 import { fetchSearchedMedia } from "@/lib/fetchSearchedMedia";
-import { parse } from "path";
+import cookie from "cookie";
 import { useEffect, useState } from "react";
 import NavigationBar from "@/components/NavigationBar";
 import Header from "@/components/Header";
@@ -14,23 +16,29 @@ import SearchedMedia from "@/components/SearchedMedia";
 import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { req, query } = context;
-  const cookies = req.headers.cookie
-    ? parse(req.headers.cookie)
-    : { base: "i18next=en" };
-  const language = cookies.base.split("=")[1] || "en";
+  const { req, query, locale } = context;
+  const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
+  const language = cookies.i18next || locale || "en";
+
+  console.log(cookies, 200);
 
   try {
     const movies = await fetchPopularMedia("movie", language);
     const tv = await fetchPopularMedia("tv", language);
-    const searched = await fetchSearchedMedia(query.search as string, language);
+    const searchQuery = query.search || "";
+    const searchArray = await fetchSearchedMedia(
+      searchQuery as string,
+      language
+    );
 
     return {
       props: {
         movies,
         tv,
-        searched,
+        searchArray,
         language,
+        searchQuery,
+        // ...(await serverSideTranslations(language, ["common"], nextConfig)),
       },
     };
   } catch (error) {
@@ -39,25 +47,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       props: {
         movies: [],
         tv: [],
-        searched: [],
+        searchArray: [],
         language: "en",
+        searchQuery: "",
       },
     };
   }
 };
 
-const Home = ({ movies, tv, language, searched }: HomeProps) => {
+const Home = ({
+  movies,
+  tv,
+  language,
+  searchArray,
+  searchQuery,
+}: HomeProps) => {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [isSearchedMenuOpen, setIsSearchedMenuOpen] = useState<boolean>(false);
+  const [_, setIsSearchedMenuOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    if (searched.length > 0) {
-      setIsSearchedMenuOpen(true);
-    } else {
-      setIsSearchedMenuOpen(false);
-    }
-  }, [searched]);
   return (
     <>
       <Head>
@@ -72,9 +80,9 @@ const Home = ({ movies, tv, language, searched }: HomeProps) => {
         />
         <Header />
       </header>
-      {isSearchedMenuOpen && (
+      {searchQuery.length >= 3 && (
         <SearchedMedia
-          data={searched}
+          data={searchArray}
           language={language}
           setIsSearchedMenuOpen={setIsSearchedMenuOpen}
         />

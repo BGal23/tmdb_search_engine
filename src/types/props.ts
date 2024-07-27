@@ -11,7 +11,8 @@ export interface HomeProps {
   movies: MediaData[];
   tv: MediaData[];
   language: "en" | "pl";
-  searched: MediaData[];
+  searchArray: MediaData[];
+  searchQuery: string;
 }
 
 export interface NavMenuProps {
