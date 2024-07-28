@@ -1,13 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import { FaSearch, FaTimes } from "react-icons/fa";
+import debounce from "lodash/debounce";
 
 const SearchingInput = () => {
   const { t } = useTranslation();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const searchQueryRef = useRef(searchQuery);
 
   useEffect(() => {
     if (typeof router.query.search === "string") {
@@ -17,16 +19,25 @@ const SearchingInput = () => {
     }
   }, [router.query.search]);
 
+  const handleSearch = useCallback(
+    debounce(() => {
+      const query = searchQueryRef.current;
+      if (query.length >= 3) {
+        router.push(`/?search=${query}`);
+      } else {
+        router.push(`/`);
+      }
+    }, 300),
+    []
+  );
+
   useEffect(() => {
-    if (searchQuery.length >= 3) {
-      router.push(`/?search=${searchQuery}`);
-    } else {
-      router.push(`/`);
-    }
-  }, [searchQuery]);
+    searchQueryRef.current = searchQuery;
+    handleSearch();
+  }, [searchQuery, handleSearch]);
 
   return (
-    <div className="flex flex-row h-10 items-center relative bottom-28 md:bottom-36 lg:bottom-52 z-30 ">
+    <div className="flex flex-row h-10 items-center relative bottom-28 md:bottom-36 lg:bottom-52 z-30">
       <FaSearch className="relative left-8 fill-black h-6 w-6" />
       <input
         value={searchQuery}

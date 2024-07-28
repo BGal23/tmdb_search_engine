@@ -24,5 +24,7 @@ export interface NavMenuProps {
 export interface SearchedProps {
   data: MediaData[];
   language: "en" | "pl";
+  searchQuery: string;
+  isSearchedMenuOpen: boolean;
   setIsSearchedMenuOpen: (isSearchedMenuOpen: boolean) => void;
 }

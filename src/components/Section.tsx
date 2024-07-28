@@ -8,24 +8,17 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
     infinite: false,
     speed: 500,
     slidesToShow: 4,
-    slidesToScroll: 1,
+    slidesToScroll: 3,
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1280,
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1,
+          slidesToScroll: 2,
         },
       },
       {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 480,
+        breakpoint: 768,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -55,15 +48,19 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
                   }/${media.id}?language=${webLanguage}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex flex-col items-center"
                 >
-                  <Image
-                    src={`https://image.tmdb.org/t/p/w500${media.posterPath}`}
-                    alt={media.title}
-                    width={500}
-                    height={750}
-                    priority
-                    className="rounded-md"
-                  />
+                  <div className="relative w-[342px] md:w-[200px] lg:w-[270px] xl:w-[250px] 2xl:w-[300px] h-[503px] md:h-[300px] lg:h-[390px] xl:h-[380px] 2xl:h-[450px]">
+                    <Image
+                      src={`https://image.tmdb.org/t/p/w342${media.posterPath}`}
+                      alt={media.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 33vw, 25vw"
+                      priority
+                      className="rounded-md object-cover"
+                    />
+                  </div>
+
                   <h3>{media.title}</h3>
                   <p>Ocena: {media.voteAverage.toFixed(1)}</p>
                   <p>Data wydania: {media.releaseDate}</p>

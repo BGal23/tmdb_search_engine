@@ -6,7 +6,7 @@ import { HomeProps } from "@/types/props";
 import { fetchPopularMedia } from "@/lib/fetchPopularMedia";
 import { fetchSearchedMedia } from "@/lib/fetchSearchedMedia";
 import cookie from "cookie";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NavigationBar from "@/components/NavigationBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -19,8 +19,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, query, locale } = context;
   const cookies = req.headers.cookie ? cookie.parse(req.headers.cookie) : {};
   const language = cookies.i18next || locale || "en";
-
-  console.log(cookies, 200);
 
   try {
     const movies = await fetchPopularMedia("movie", language);
@@ -64,7 +62,15 @@ const Home = ({
 }: HomeProps) => {
   const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [_, setIsSearchedMenuOpen] = useState<boolean>(false);
+  const [isSearchedMenuOpen, setIsSearchedMenuOpen] = useState<boolean>(false);
+
+  // const openSearchModal = (searchQuery: string, setIsSearchedMenuOpen) => {
+  //   if (searchQuery.length >= 3) {
+  //     setIsSearchedMenuOpen(true);
+  //   }
+  // };
+
+  // openSearchModal(searchQuery, setIsSearchedMenuOpen);
 
   return (
     <>
@@ -80,13 +86,13 @@ const Home = ({
         />
         <Header />
       </header>
-      {searchQuery.length >= 3 && (
-        <SearchedMedia
-          data={searchArray}
-          language={language}
-          setIsSearchedMenuOpen={setIsSearchedMenuOpen}
-        />
-      )}
+      <SearchedMedia
+        data={searchArray}
+        language={language}
+        searchQuery={searchQuery}
+        isSearchedMenuOpen={isSearchedMenuOpen}
+        setIsSearchedMenuOpen={setIsSearchedMenuOpen}
+      />
       <main>
         <Section
           title={t("bestMovies")}
