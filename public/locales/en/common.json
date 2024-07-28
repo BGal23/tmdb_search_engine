@@ -7,5 +7,7 @@
   "footerDescription": "This is a short description about the website. It provides useful information to the visitors.",
   "searchingTitle": "SEARCH YOUR MOVIE OR TV SERIES",
   "searchPlaceholder": "Search",
-  "cantFind": "Sorry, we can't find any movie or series"
+  "cantFind": "Sorry, we can't find any movie or series",
+  "rating": "Rating",
+  "releaseDate": "Release date"
 }

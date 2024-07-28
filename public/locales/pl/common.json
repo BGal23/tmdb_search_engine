@@ -7,5 +7,7 @@
   "footerDescription": "Oto krótki opis strony internetowej. Dostarcza odwiedzającym przydatnych informacji.",
   "searchingTitle": "WYSZUKAJ SWÓJ FILM LUB SERIAL",
   "searchPlaceholder": "Szukaj",
-  "cantFind": "Przepraszamy, nie możemy znaleźć żadnego filmu ani serialu "
+  "cantFind": "Przepraszamy, nie możemy znaleźć żadnego filmu ani serialu ",
+  "rating": "Ocena",
+  "releaseDate": "Data wydania"
 }

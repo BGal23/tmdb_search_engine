@@ -60,7 +60,6 @@ const Home = ({
   searchArray,
   searchQuery,
 }: HomeProps) => {
-  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isSearchedMenuOpen, setIsSearchedMenuOpen] = useState<boolean>(false);
 
@@ -95,13 +94,13 @@ const Home = ({
       />
       <main>
         <Section
-          title={t("bestMovies")}
+          title={"bestMovies"}
           data={movies}
           language={language}
           anchor={"bestMovies"}
         />
         <Section
-          title={t("bestSeries")}
+          title={"bestSeries"}
           data={tv}
           language={language}
           anchor={"bestSeries"}

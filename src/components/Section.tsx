@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import { SectionProps } from "@/types/props";
+import { useTranslation } from "react-i18next";
 
 const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
   const settings = {
@@ -28,11 +29,12 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
   };
 
   const webLanguage = language === "en" ? "en" : "pl";
+  const { t } = useTranslation();
 
   return (
     <section id={anchor} className="container">
       <div className="bg-gradient-section-name rounded-l-md">
-        <h2 className="text-3xl my-4 ml-4 py-2">{title}</h2>
+        <h2 className="text-3xl my-4 ml-4 py-2">{t(title)}</h2>
       </div>
       <div className="w-full px-6">
         {data && (
@@ -61,9 +63,20 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
                     />
                   </div>
 
-                  <h3>{media.title}</h3>
-                  <p>Ocena: {media.voteAverage.toFixed(1)}</p>
-                  <p>Data wydania: {media.releaseDate}</p>
+                  <h3 className="text-lg font-semibold text-center">
+                    {media.title}
+                  </h3>
+                  <p>
+                    {t("rating")}: {media.voteAverage.toFixed(1)}
+                  </p>
+                  <p>
+                    {t("releaseDate")}:{" "}
+                    {language === "en"
+                      ? `${media.releaseDate.split("-")[1]}/${
+                          media.releaseDate.split("-")[2]
+                        }/${media.releaseDate.split("-")[0]}`
+                      : media.releaseDate.split("-").reverse().join(".")}
+                  </p>
                 </a>
               </div>
             ))}

@@ -4,6 +4,7 @@ import { SearchedProps } from "@/types/props";
 import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import Image from "next/image";
+import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
 
@@ -15,6 +16,8 @@ const SearchedMedia: React.FC<SearchedProps> = ({
   setIsSearchedMenuOpen,
 }) => {
   const { t } = useTranslation();
+
+  const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
 
   useEffect(() => {
     if (searchQuery.length >= 3) {
@@ -60,7 +63,7 @@ const SearchedMedia: React.FC<SearchedProps> = ({
                     className="flex flex-col items-start md:items-center w-full"
                   >
                     <div className="hidden md:block">
-                      {element.posterPath ? (
+                      {element.posterPath && !isMobile ? (
                         <div className="relative w-[128px] h-[192px]">
                           <Image
                             src={`https://image.tmdb.org/t/p/w154${element.posterPath}`}
