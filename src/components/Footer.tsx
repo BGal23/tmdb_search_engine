@@ -6,7 +6,7 @@ const Footer = () => {
   const { t } = useTranslation();
 
   return (
-    <div className="container flex flex-col md:flex-row justify-around items-center border-t border-white/70 p-4 gap-6">
+    <div className="container flex flex-col md:flex-row justify-around items-center border-t border-white/70 p-4 gap-6 mt-8">
       <Logo />
       <p className="max-w-full md:max-w-52 xl:max-w-full text-center">
         {t("footerDescription")}

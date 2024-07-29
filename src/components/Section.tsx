@@ -57,7 +57,7 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
                   rel="noopener noreferrer"
                   className="flex flex-col items-center"
                 >
-                  <div className="relative w-[280px] md:w-[200px] lg:w-[270px] xl:w-[250px] 2xl:w-[300px] h-[400px] md:h-[300px] lg:h-[390px] xl:h-[380px] 2xl:h-[450px]">
+                  <div className="relative w-[240px] min-[400px]:w-[280px] md:w-[200px] lg:w-[270px] xl:w-[250px] 2xl:w-[300px] h-[360px] min-[400px]:h-[450px] md:h-[300px] lg:h-[390px] xl:h-[380px] 2xl:h-[450px]">
                     <Image
                       src={`https://image.tmdb.org/t/p/w342${media.posterPath}`}
                       alt={media.title}

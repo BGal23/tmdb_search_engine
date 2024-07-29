@@ -13,7 +13,7 @@ const config: Config = {
         "bg-tablet": "url('/images/bg-tablet.jpg')",
         "bg-mobile": "url('/images/bg-mobile.jpg')",
         "gradient-section-name":
-          "linear-gradient(90deg, rgba(185, 0, 0, 0.2), black 90%)",
+          "linear-gradient(90deg, rgba(185, 0, 0, 0.4), black 90%)",
       },
       margin: {
         "scroll-mt-20": "20px",
