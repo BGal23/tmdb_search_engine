@@ -1,6 +1,3 @@
-import { useTranslation } from "react-i18next";
-// import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-// import nextConfig from "../../next.config.mjs";
 import { GetServerSideProps } from "next";
 import { HomeProps } from "@/types/props";
 import { fetchPopularMedia } from "@/lib/fetchPopularMedia";
@@ -62,14 +59,6 @@ const Home = ({
 }: HomeProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isSearchedMenuOpen, setIsSearchedMenuOpen] = useState<boolean>(false);
-
-  // const openSearchModal = (searchQuery: string, setIsSearchedMenuOpen) => {
-  //   if (searchQuery.length >= 3) {
-  //     setIsSearchedMenuOpen(true);
-  //   }
-  // };
-
-  // openSearchModal(searchQuery, setIsSearchedMenuOpen);
 
   return (
     <>

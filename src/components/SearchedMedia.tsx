@@ -39,7 +39,7 @@ const SearchedMedia: React.FC<SearchedProps> = ({
         }}
       ></div>
       {isSearchedMenuOpen && (
-        <div className="absolute z-30 left-1/2 top-[10.5rem] md:top-52 lg:top-[17.5rem] min-w-80 md:w-[36rem] lg:w-[45.5rem] bg-black/90 transform -translate-x-1/2 border border-white/70 rounded-lg mb-4">
+        <div className="absolute z-30 left-1/2 top-40 md:top-52 lg:top-[16.5rem] min-w-80 md:w-[36rem] lg:w-[45.5rem] bg-black/90 transform -translate-x-1/2 border border-white/70 rounded-lg mb-4">
           {data.length === 0 ? (
             <div className=" text-center m-4">{t("cantFind")} :(</div>
           ) : (

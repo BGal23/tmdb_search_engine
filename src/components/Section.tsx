@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Slider from "react-slick";
 import { SectionProps } from "@/types/props";
@@ -19,7 +21,7 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
         },
       },
       {
-        breakpoint: 768,
+        breakpoint: 767,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -32,7 +34,10 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
   const { t } = useTranslation();
 
   return (
-    <section id={anchor} className="container">
+    <section
+      id={anchor}
+      className="container scroll-mt-16 md:scroll-mt-18 lg:scroll-mt-20"
+    >
       <div className="bg-gradient-section-name rounded-l-md">
         <h2 className="text-3xl my-4 ml-4 py-2">{t(title)}</h2>
       </div>
@@ -52,7 +57,7 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
                   rel="noopener noreferrer"
                   className="flex flex-col items-center"
                 >
-                  <div className="relative w-[342px] md:w-[200px] lg:w-[270px] xl:w-[250px] 2xl:w-[300px] h-[503px] md:h-[300px] lg:h-[390px] xl:h-[380px] 2xl:h-[450px]">
+                  <div className="relative w-[280px] md:w-[200px] lg:w-[270px] xl:w-[250px] 2xl:w-[300px] h-[400px] md:h-[300px] lg:h-[390px] xl:h-[380px] 2xl:h-[450px]">
                     <Image
                       src={`https://image.tmdb.org/t/p/w342${media.posterPath}`}
                       alt={media.title}

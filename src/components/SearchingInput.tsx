@@ -37,7 +37,7 @@ const SearchingInput = () => {
   }, [searchQuery, handleSearch]);
 
   return (
-    <div className="flex flex-row h-10 items-center relative bottom-28 md:bottom-36 lg:bottom-52 z-30">
+    <div className="flex flex-row h-10 items-center relative z-30">
       <FaSearch className="relative left-8 fill-black h-6 w-6" />
       <input
         value={searchQuery}
