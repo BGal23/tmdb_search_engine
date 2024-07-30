@@ -28,3 +28,7 @@ export interface SearchedProps {
   isSearchedMenuOpen: boolean;
   setIsSearchedMenuOpen: (isSearchedMenuOpen: boolean) => void;
 }
+
+export interface InputProps {
+  setIsSearchedMenuOpen: (isSearchedMenuOpen: boolean) => void;
+}

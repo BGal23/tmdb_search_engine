@@ -72,7 +72,7 @@ const Home = ({
           setIsMobileMenuOpen={setIsMobileMenuOpen}
           setIsSearchedMenuOpen={setIsSearchedMenuOpen}
         />
-        <Header />
+        <Header setIsSearchedMenuOpen={setIsSearchedMenuOpen} />
       </header>
       <SearchedMedia
         data={searchArray}

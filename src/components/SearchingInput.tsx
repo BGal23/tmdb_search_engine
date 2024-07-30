@@ -4,8 +4,9 @@ import { useTranslation } from "react-i18next";
 import { useRouter } from "next/router";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import debounce from "lodash/debounce";
+import { InputProps } from "@/types/props";
 
-const SearchingInput = () => {
+const SearchingInput: React.FC<InputProps> = ({ setIsSearchedMenuOpen }) => {
   const { t } = useTranslation();
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -17,7 +18,7 @@ const SearchingInput = () => {
     } else if (Array.isArray(router.query.search)) {
       setSearchQuery(router.query.search[0] || "");
     }
-  }, [router.query.search]);
+  }, []);
 
   const handleSearch = useCallback(
     debounce(() => {
@@ -31,6 +32,11 @@ const SearchingInput = () => {
     []
   );
 
+  const closeSearchNow = () => {
+    setSearchQuery("");
+    router.push(`/`);
+  };
+
   useEffect(() => {
     searchQueryRef.current = searchQuery;
     handleSearch();
@@ -41,6 +47,7 @@ const SearchingInput = () => {
       <FaSearch className="relative left-8 fill-black h-6 w-6" />
       <input
         value={searchQuery}
+        onFocus={() => setIsSearchedMenuOpen(true)}
         onChange={(event) => setSearchQuery(event.target.value)}
         className="h-full w-52 md:w-80 lg:w-[25rem] text-black border-solid border-2 border-black pl-9"
         type="text"
@@ -48,7 +55,7 @@ const SearchingInput = () => {
       />
       <div className="relative right-8 h-6 w-6">
         <button
-          onClick={() => setSearchQuery("")}
+          onClick={() => closeSearchNow()}
           type="button"
           className="flex items-center h-full w-full"
           style={{ display: searchQuery.length > 0 ? "block" : "none" }}
