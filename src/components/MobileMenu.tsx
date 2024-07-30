@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { NavMenuProps } from "@/types/props";
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -9,7 +9,7 @@ const MobileMenu: React.FC<NavMenuProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <div

@@ -1,9 +1,9 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 const Footer = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <div className="container flex flex-col md:flex-row justify-around items-center border-t border-white/70 p-4 gap-6 mt-8">

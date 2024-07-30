@@ -2,6 +2,7 @@ import { GetServerSideProps } from "next";
 import { HomeProps } from "@/types/props";
 import { fetchPopularMedia } from "@/lib/fetchPopularMedia";
 import { fetchSearchedMedia } from "@/lib/fetchSearchedMedia";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import cookie from "cookie";
 import { useState } from "react";
 import NavigationBar from "@/components/NavigationBar";
@@ -31,9 +32,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         movies,
         tv,
         searchArray,
-        language,
         searchQuery,
-        // ...(await serverSideTranslations(language, ["common"], nextConfig)),
+        ...(await serverSideTranslations(language, ["common"])),
       },
     };
   } catch (error) {
@@ -43,8 +43,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         movies: [],
         tv: [],
         searchArray: [],
-        language: "en",
         searchQuery: "",
+        ...(await serverSideTranslations("en", ["common"])),
       },
     };
   }

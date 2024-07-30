@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Slider from "react-slick";
 import { SectionProps } from "@/types/props";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 
 const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
   const settings = {
@@ -31,7 +31,7 @@ const Section: React.FC<SectionProps> = ({ title, data, language, anchor }) => {
   };
 
   const webLanguage = language === "en" ? "en" : "pl";
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <section

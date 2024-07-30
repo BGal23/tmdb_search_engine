@@ -1,13 +1,13 @@
 "use client";
 import { useEffect, useState, useCallback, useRef } from "react";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import debounce from "lodash/debounce";
 import { InputProps } from "@/types/props";
 
 const SearchingInput: React.FC<InputProps> = ({ setIsSearchedMenuOpen }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string>("");
   const searchQueryRef = useRef(searchQuery);
@@ -37,6 +37,12 @@ const SearchingInput: React.FC<InputProps> = ({ setIsSearchedMenuOpen }) => {
     router.push(`/`);
   };
 
+  const openSearchModal = () => {
+    if (searchQuery.length >= 3) {
+      setIsSearchedMenuOpen(true);
+    }
+  };
+
   useEffect(() => {
     searchQueryRef.current = searchQuery;
     handleSearch();
@@ -47,7 +53,7 @@ const SearchingInput: React.FC<InputProps> = ({ setIsSearchedMenuOpen }) => {
       <FaSearch className="relative left-8 fill-black h-6 w-6" />
       <input
         value={searchQuery}
-        onFocus={() => setIsSearchedMenuOpen(true)}
+        onFocus={() => openSearchModal()}
         onChange={(event) => setSearchQuery(event.target.value)}
         className="h-full w-52 md:w-80 lg:w-[25rem] text-black border-solid border-2 border-black pl-9"
         type="text"

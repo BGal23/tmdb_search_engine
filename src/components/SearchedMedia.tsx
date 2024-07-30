@@ -5,7 +5,7 @@ import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import Image from "next/image";
 import { useMediaQuery } from "react-responsive";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 
 const SearchedMedia: React.FC<SearchedProps> = ({
@@ -15,7 +15,7 @@ const SearchedMedia: React.FC<SearchedProps> = ({
   isSearchedMenuOpen,
   setIsSearchedMenuOpen,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
 

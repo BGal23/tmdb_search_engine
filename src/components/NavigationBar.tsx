@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "next-i18next";
 import { NavMenuProps } from "@/types/props";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Logo from "./Logo";
@@ -11,7 +11,7 @@ const NavigationBar: React.FC<NavMenuProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
-  const { t } = useTranslation();
+  const { t } = useTranslation("common");
 
   return (
     <div className="fixed w-full bg-black/80 z-50 h-12 md:h-14 lg:h-16 top-0 border-b border-white/70">
