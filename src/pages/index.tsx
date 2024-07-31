@@ -51,13 +51,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 };
 
-const Home = ({
-  movies,
-  tv,
-  // language,
-  searchArray,
-  searchQuery,
-}: IHomeProps) => {
+const Home = ({ movies, tv, searchArray, searchQuery }: IHomeProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isSearchedMenuOpen, setIsSearchedMenuOpen] = useState<boolean>(false);
   const { t } = useTranslation("common");
