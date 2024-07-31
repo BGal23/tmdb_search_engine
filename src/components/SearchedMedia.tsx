@@ -1,6 +1,6 @@
 "use client";
 
-import { SearchedProps } from "@/types/props";
+import { ISearchedProps } from "@/types/props";
 import { MdLocalMovies } from "react-icons/md";
 import { PiTelevisionSimpleFill } from "react-icons/pi";
 import Image from "next/image";
@@ -8,7 +8,10 @@ import { useMediaQuery } from "react-responsive";
 import { useTranslation } from "next-i18next";
 import { useEffect } from "react";
 
-const SearchedMedia: React.FC<SearchedProps> = ({
+export const mainUrl = "https://www.themoviedb.org/";
+export const photoUrl = "https://image.tmdb.org/t/p/";
+
+const SearchedMedia: React.FC<ISearchedProps> = ({
   data,
   language,
   searchQuery,
@@ -17,7 +20,8 @@ const SearchedMedia: React.FC<SearchedProps> = ({
 }) => {
   const { t } = useTranslation("common");
 
-  const isMobile: boolean = useMediaQuery({ maxWidth: 767 });
+  const maxMobileScreenWidth = 767;
+  const isMobile: boolean = useMediaQuery({ maxWidth: maxMobileScreenWidth });
 
   useEffect(() => {
     if (searchQuery.length >= 3) {
@@ -55,18 +59,18 @@ const SearchedMedia: React.FC<SearchedProps> = ({
                   key={element.id}
                 >
                   <a
-                    href={`https://www.themoviedb.org/${
-                      element.isMovie ? "movie" : "tv"
-                    }/${element.id}?language=${language}`}
+                    href={`${mainUrl}${element.isMovie ? "movie" : "tv"}/${
+                      element.id
+                    }?language=${language}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-start md:items-center w-full"
                   >
                     <div className="hidden md:block">
-                      {element.posterPath && !isMobile ? (
+                      {element.posterPath && !isMobile ? ( // only downloads photos if it's not a mobile version
                         <div className="relative w-[128px] h-[192px]">
                           <Image
-                            src={`https://image.tmdb.org/t/p/w154${element.posterPath}`}
+                            src={`${photoUrl}w154${element.posterPath}`}
                             alt={element.title}
                             fill
                             priority
@@ -89,7 +93,7 @@ const SearchedMedia: React.FC<SearchedProps> = ({
                     </h3>
                     <div className="flex flex-row gap-2 text-xs text-white/60">
                       <p>{element.releaseDate.slice(0, 4)}</p>
-                      <p>{element.isMovie ? "Movie" : "TV Series"}</p>
+                      <p>{element.isMovie ? t("movie") : t("tvSeries")}</p>
                     </div>
                   </a>
                 </li>

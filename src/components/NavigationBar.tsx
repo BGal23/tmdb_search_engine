@@ -1,20 +1,24 @@
 "use client";
 
 import { useTranslation } from "next-i18next";
-import { NavMenuProps } from "@/types/props";
+import { INavMenuProps } from "@/types/props";
 import LanguageSwitcher from "./LanguageSwitcher";
 import Logo from "./Logo";
 import Link from "next/link";
 import MobileBtn from "./MobileBtn";
 
-const NavigationBar: React.FC<NavMenuProps> = ({
+const NavigationBar: React.FC<INavMenuProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
+  setIsSearchedMenuOpen,
 }) => {
   const { t } = useTranslation("common");
 
   return (
-    <div className="fixed w-full bg-black/80 z-50 h-12 md:h-14 lg:h-16 top-0 border-b border-white/70">
+    <div
+      onClick={setIsSearchedMenuOpen && (() => setIsSearchedMenuOpen(false))}
+      className="fixed w-full bg-black/80 z-50 h-12 md:h-14 lg:h-16 top-0 border-b border-white/70"
+    >
       <div className="container flex flex-row items-center justify-between md:justify-start h-full">
         <Link href="/">
           <Logo />

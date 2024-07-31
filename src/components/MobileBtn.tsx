@@ -1,9 +1,9 @@
 "use client";
 
-import { NavMenuProps } from "@/types/props";
+import { INavMenuProps } from "@/types/props";
 import { FaBars, FaTimes } from "react-icons/fa";
 
-const MobileBtn: React.FC<NavMenuProps> = ({
+const MobileBtn: React.FC<INavMenuProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {

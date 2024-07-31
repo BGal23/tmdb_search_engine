@@ -4,10 +4,11 @@
   "bestSeries": "Najlepsze Seriale",
   "headerPhoto": "Zdjęcie Tła",
   "links": "Linki",
-  "footerDescription": "Oto krótki opis strony internetowej. Dostarcza odwiedzającym przydatnych informacji.",
-  "searchingTitle": "WYSZUKAJ SWÓJ FILM LUB SERIAL",
+  "description": "TMDB Search Engine to prosta applikacja one-page do wyświetlania filmów i seriali z API TMDB.",
   "searchPlaceholder": "Szukaj",
   "cantFind": "Przepraszamy, nie możemy znaleźć żadnego filmu ani serialu ",
   "rating": "Ocena",
-  "releaseDate": "Data wydania"
+  "releaseDate": "Data wydania",
+  "movie": "Film",
+  "tvSeries": "Serial"
 }

@@ -1,34 +1,38 @@
-import { MediaData } from "./data";
+import { IMediaData } from "./data";
 
-export interface SectionProps {
+export interface ISectionProps {
   title: string;
-  data: MediaData[];
+  data: IMediaData[];
   language: "en" | "pl";
   anchor: string;
 }
 
-export interface HomeProps {
-  movies: MediaData[];
-  tv: MediaData[];
+export interface IHomeProps {
+  movies: IMediaData[];
+  tv: IMediaData[];
   language: "en" | "pl";
-  searchArray: MediaData[];
+  searchArray: IMediaData[];
   searchQuery: string;
 }
 
-export interface NavMenuProps {
+export interface INavMenuProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (isMobileMenuOpen: boolean) => void;
   setIsSearchedMenuOpen?: (isSearchedMenuOpen: boolean) => void;
 }
 
-export interface SearchedProps {
-  data: MediaData[];
+export interface ISearchedProps {
+  data: IMediaData[];
   language: "en" | "pl";
   searchQuery: string;
   isSearchedMenuOpen: boolean;
   setIsSearchedMenuOpen: (isSearchedMenuOpen: boolean) => void;
 }
 
-export interface InputProps {
+export interface IInputProps {
   setIsSearchedMenuOpen: (isSearchedMenuOpen: boolean) => void;
+}
+
+export interface ILanguageSwitcherProps {
+  setIsMobileMenuOpen?: (isMobileMenuOpen: boolean) => void;
 }

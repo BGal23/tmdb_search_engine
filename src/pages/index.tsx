@@ -1,7 +1,7 @@
 import { GetServerSideProps } from "next";
-import { HomeProps } from "@/types/props";
-import { fetchPopularMedia } from "@/lib/fetchPopularMedia";
-import { fetchSearchedMedia } from "@/lib/fetchSearchedMedia";
+import { IHomeProps } from "@/types/props";
+import fetchPopularMedia from "@/lib/fetchPopularMedia";
+import fetchSearchedMedia from "@/lib/fetchSearchedMedia";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import cookie from "cookie";
 import { useState } from "react";
@@ -12,6 +12,7 @@ import Section from "@/components/Section";
 import MobileMenu from "@/components/MobileMenu";
 import SearchedMedia from "@/components/SearchedMedia";
 import Head from "next/head";
+import { useTranslation } from "next-i18next";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { req, query, locale } = context;
@@ -33,7 +34,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         tv,
         searchArray,
         searchQuery,
-        ...(await serverSideTranslations(language, ["common"])),
+        ...(await serverSideTranslations(language, ["common"])), // renders pages depending on the selected language
       },
     };
   } catch (error) {
@@ -56,15 +57,18 @@ const Home = ({
   language,
   searchArray,
   searchQuery,
-}: HomeProps) => {
+}: IHomeProps) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
   const [isSearchedMenuOpen, setIsSearchedMenuOpen] = useState<boolean>(false);
+  const { t } = useTranslation("common");
 
   return (
     <>
       <Head>
         <title>TMDB Search Engine</title>
-        <meta name="description" content="Your page description goes here." />
+        <meta name="description" content={t("description")} />
+        <meta name="robots" content="index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <header>
         <NavigationBar

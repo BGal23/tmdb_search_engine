@@ -1,4 +1,4 @@
-export interface Movie {
+export interface IMovieApi {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];
@@ -15,7 +15,7 @@ export interface Movie {
   vote_count: number;
 }
 
-export interface TVSeries {
+export interface ITVSeriesApi {
   adult: boolean;
   backdrop_path: string;
   genre_ids: number[];

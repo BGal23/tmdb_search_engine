@@ -1,10 +1,8 @@
-import axios from "axios";
 import mediaDestructuring from "./mediaDestructuring";
+import { apiURL } from "./fetchPopularMedia";
+import mergedResults from "./mergedResults";
 
-export const fetchSearchedMedia = async (
-  searchQuery: string,
-  language: string
-) => {
+const fetchSearchedMedia = async (searchQuery: string, language: string) => {
   try {
     const settings = {
       params: {
@@ -14,43 +12,20 @@ export const fetchSearchedMedia = async (
       },
     };
     const [movieResponse, tvResponse] = await Promise.all([
-      axios.get(`https://api.themoviedb.org/3/search/movie`, settings),
-      axios.get(`https://api.themoviedb.org/3/search/tv`, settings),
+      apiURL.get(`search/movie`, settings),
+      apiURL.get(`search/tv`, settings),
     ]);
 
     const movie = mediaDestructuring(movieResponse.data.results, "movie");
     const tv = mediaDestructuring(tvResponse.data.results, "tv");
 
-    let mergedResults = [];
-
     if (movie && tv) {
-      let i = 0;
-      let j = 0;
-
-      while (i < movie.length && j < tv.length) {
-        if (movie[i].popularity > tv[j].popularity) {
-          mergedResults.push(movie[i]);
-          i++;
-        } else {
-          mergedResults.push(tv[j]);
-          j++;
-        }
-      }
-
-      while (i < movie.length) {
-        mergedResults.push(movie[i]);
-        i++;
-      }
-
-      while (j < tv.length) {
-        mergedResults.push(tv[j]);
-        j++;
-      }
+      return mergedResults(movie, tv).splice(0, 20);
     }
-
-    return mergedResults.splice(0, 20);
   } catch (error) {
     console.error("Error fetching searched media:", error);
     throw new Error("Failed to fetch searched media");
   }
 };
+
+export default fetchSearchedMedia;

@@ -4,10 +4,11 @@
   "bestSeries": "Best TV Series",
   "headerPhoto": "Background Photo",
   "links": "Links",
-  "footerDescription": "This is a short description about the website. It provides useful information to the visitors.",
-  "searchingTitle": "SEARCH YOUR MOVIE OR TV SERIES",
+  "description": "TMDB Search Engine is a simple one-page application to display movies and TV series with TMDB API.",
   "searchPlaceholder": "Search",
   "cantFind": "Sorry, we can't find any movie or series",
   "rating": "Rating",
-  "releaseDate": "Release date"
+  "releaseDate": "Release date",
+  "movie": "Movie",
+  "tvSeries": "TV Series"
 }

@@ -1,12 +1,13 @@
 "use client";
+
 import { useEffect, useState, useCallback, useRef } from "react";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { FaSearch, FaTimes } from "react-icons/fa";
 import debounce from "lodash/debounce";
-import { InputProps } from "@/types/props";
+import { IInputProps } from "@/types/props";
 
-const SearchingInput: React.FC<InputProps> = ({ setIsSearchedMenuOpen }) => {
+const SearchingInput: React.FC<IInputProps> = ({ setIsSearchedMenuOpen }) => {
   const { t } = useTranslation("common");
   const router = useRouter();
   const [searchQuery, setSearchQuery] = useState<string>("");
@@ -39,7 +40,14 @@ const SearchingInput: React.FC<InputProps> = ({ setIsSearchedMenuOpen }) => {
 
   const openSearchModal = () => {
     if (searchQuery.length >= 3) {
-      setIsSearchedMenuOpen(true);
+      if (!router.query.search) {
+        handleSearch();
+        setTimeout(() => {
+          setIsSearchedMenuOpen(true);
+        }, 500); // waiting for the movies array to not be empty
+      } else {
+        setIsSearchedMenuOpen(true);
+      }
     }
   };
 
@@ -55,8 +63,8 @@ const SearchingInput: React.FC<InputProps> = ({ setIsSearchedMenuOpen }) => {
         value={searchQuery}
         onFocus={() => openSearchModal()}
         onChange={(event) => setSearchQuery(event.target.value)}
-        className="h-full w-52 md:w-80 lg:w-[25rem] text-black border-solid border-2 border-black pl-9"
         type="text"
+        className="h-full w-52 md:w-80 lg:w-[25rem] text-black border-solid border-2 border-black bg-slate-200 focus:bg-white  transition-all duration-300 ease pl-9"
         placeholder={t("searchPlaceholder")}
       />
       <div className="relative right-8 h-6 w-6">

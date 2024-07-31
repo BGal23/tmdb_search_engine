@@ -1,11 +1,11 @@
 "use client";
 
 import { useTranslation } from "next-i18next";
-import { NavMenuProps } from "@/types/props";
+import { INavMenuProps } from "@/types/props";
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-const MobileMenu: React.FC<NavMenuProps> = ({
+const MobileMenu: React.FC<INavMenuProps> = ({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
 }) => {
@@ -29,7 +29,7 @@ const MobileMenu: React.FC<NavMenuProps> = ({
         >
           {t("bestSeries")}
         </Link>
-        <LanguageSwitcher />
+        <LanguageSwitcher setIsMobileMenuOpen={setIsMobileMenuOpen} />
       </div>
     </div>
   );
