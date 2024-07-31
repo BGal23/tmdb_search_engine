@@ -54,7 +54,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Home = ({
   movies,
   tv,
-  language,
+  // language,
   searchArray,
   searchQuery,
 }: IHomeProps) => {
@@ -80,7 +80,7 @@ const Home = ({
       </header>
       <SearchedMedia
         data={searchArray}
-        language={language}
+        language={"language"}
         searchQuery={searchQuery}
         isSearchedMenuOpen={isSearchedMenuOpen}
         setIsSearchedMenuOpen={setIsSearchedMenuOpen}
@@ -89,13 +89,13 @@ const Home = ({
         <Section
           title={"bestMovies"}
           data={movies}
-          language={language}
+          language={"language"}
           anchor={"bestMovies"}
         />
         <Section
           title={"bestSeries"}
           data={tv}
-          language={language}
+          language={"language"}
           anchor={"bestSeries"}
         />
       </main>

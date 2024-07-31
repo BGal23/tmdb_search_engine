@@ -60,7 +60,7 @@ const Section: React.FC<ISectionProps> = ({
                 <a
                   href={`${mainUrl}/${media.isMovie ? "movie" : "tv"}/${
                     media.id
-                  }?language=${language}`}
+                  }?language=${t("language")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex flex-col items-center"

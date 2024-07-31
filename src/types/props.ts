@@ -3,14 +3,14 @@ import { IMediaData } from "./data";
 export interface ISectionProps {
   title: string;
   data: IMediaData[];
-  language: "en" | "pl";
+  language: string;
   anchor: string;
 }
 
 export interface IHomeProps {
   movies: IMediaData[];
   tv: IMediaData[];
-  language: "en" | "pl";
+  language: string;
   searchArray: IMediaData[];
   searchQuery: string;
 }
@@ -23,7 +23,7 @@ export interface INavMenuProps {
 
 export interface ISearchedProps {
   data: IMediaData[];
-  language: "en" | "pl";
+  language: string;
   searchQuery: string;
   isSearchedMenuOpen: boolean;
   setIsSearchedMenuOpen: (isSearchedMenuOpen: boolean) => void;

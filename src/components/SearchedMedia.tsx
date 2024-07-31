@@ -61,7 +61,7 @@ const SearchedMedia: React.FC<ISearchedProps> = ({
                   <a
                     href={`${mainUrl}${element.isMovie ? "movie" : "tv"}/${
                       element.id
-                    }?language=${language}`}
+                    }?language=${t("language")}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-start md:items-center w-full"
